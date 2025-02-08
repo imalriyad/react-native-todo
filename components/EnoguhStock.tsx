@@ -1,12 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { FoodItem } from "@/types/type";
+import ListTemplate from "./ListTemplate";
 
-export default function EnoguhStock() {
+type EnoguhStock = {
+  enoguhItem: FoodItem[];
+};
+export default function EnoguhStock({ enoguhItem }: EnoguhStock) {
   return (
     <View>
-      <Text>EnoguhStock</Text>
+      <ListTemplate itemData={enoguhItem} />
     </View>
-  )
+  );
 }
 
-const styles = StyleSheet.create({})
+

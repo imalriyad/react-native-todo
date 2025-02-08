@@ -1,12 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { FlatList, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import type { FoodItem } from "@/types/type";
+import ListTemplate from "./ListTemplate";
 
-export default function LessStock() {
+type LessStock = {
+  lessStock: FoodItem[];
+};
+
+export default function LessStock({ lessStock }: LessStock) {
   return (
     <View>
-      <Text>LessStock</Text>
+      <ListTemplate itemData={lessStock} />
     </View>
-  )
+  );
 }
-
-const styles = StyleSheet.create({})

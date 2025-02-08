@@ -7,7 +7,7 @@ export default function RootLayout() {
     <Stack
       screenOptions={{
         title: "Dashboard",
-        statusBarBackgroundColor: "orange",
+        statusBarBackgroundColor: "green",
       }}
     />
   );

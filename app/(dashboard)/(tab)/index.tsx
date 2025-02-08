@@ -6,22 +6,36 @@ import AllItem from "@/components/AllItem";
 import LessStock from "@/components/LessStock";
 import EnoguhStock from "@/components/EnoguhStock";
 import AddItem from "@/components/AddItem";
+import { FoodItem } from "@/types/type";
 
 const index = () => {
   const [selectedTab, setSelectedTab] = useState(1);
+  const [foodData, setFooddata] = useState<FoodItem[]>([
+    { id: 1, item: "Rice", quantity: 10 },
+    { id: 2, item: "Chicken", quantity: 7 },
+    { id: 3, item: "Eggs", quantity: 3 },
+    { id: 4, item: "Apples", quantity: 5 },
+    { id: 5, item: "Milk", quantity: 2 },
+  ]);
 
   const renderComponent = () => {
     switch (selectedTab) {
       case 1:
-        return <AllItem />;
+        return <AllItem foodData={foodData} />;
       case 2:
-        return <LessStock />;
+        return (
+          <LessStock lessStock={foodData.filter((item) => item.quantity < 5)} />
+        );
       case 3:
-        return <EnoguhStock />;
+        return (
+          <EnoguhStock
+            enoguhItem={foodData.filter((item) => item.quantity >= 5)}
+          />
+        );
       case 4:
         return <AddItem />;
       default:
-        return <AllItem />;
+        return <AllItem foodData={foodData} />;
     }
   };
 

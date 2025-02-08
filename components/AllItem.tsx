@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
+import type { FoodItem } from "@/types/type";
+import ListTemplate from "./ListTemplate";
 
-export default function AllItem() {
+type AllItemProps = {
+  foodData: FoodItem[];
+};
+
+export default function AllItem({ foodData }: AllItemProps) {
   return (
-    <View style={styles.container}>
-      <Text>All Item Component</Text>
+    <View>
+      <ListTemplate itemData={foodData} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    
-  },
-});
