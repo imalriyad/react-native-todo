@@ -8,6 +8,7 @@ type LessStock = {
 };
 
 export default function LessStock({ lessStock }: LessStock) {
+
   return (
     <View>
       <ListTemplate itemData={lessStock} />

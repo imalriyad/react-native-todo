@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 import { Alert, Button, StyleSheet, TextInput, View } from "react-native";
 
 type SetFooddata = {
-  setFooddata: (newFoodData: FoodItem[]) => void;
+  foodData: FoodItem[];
+  setFooddata: React.Dispatch<React.SetStateAction<FoodItem[]>>;
 };
 
-export default function AddItem({ setFooddata }: SetFooddata) {
+export default function AddItem({ setFooddata, foodData }: SetFooddata) {
   const [item, setItemName] = useState("");
   const [itemQuantity, setItemQuantity] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [nextId, setNextId] = useState<number>(6);
+ 
 
   const handleAddItem = () => {
     if (
@@ -20,19 +21,20 @@ export default function AddItem({ setFooddata }: SetFooddata) {
       Number(itemQuantity) <= 0
     ) {
       setErrorMessage("Please enter a valid item name and quantity.");
-
       return;
     }
+    const nextId =
+      foodData.length > 0 ? foodData[foodData.length - 1].id + 1 : 1;
+
     setErrorMessage("");
-    const quantity = Number(itemQuantity);
     const newItem: FoodItem = {
       id: nextId,
       item,
-      quantity,
+      quantity: Number(itemQuantity),
     };
-    setFooddata((prevFoodData: FoodItem[]) => [...prevFoodData, newItem]);
 
-    setNextId((prevNextId) => prevNextId + 1);
+    setFooddata((prevFoodData) => [...prevFoodData, newItem]);
+    Alert.alert("Congratulations", "Item added Successfully");
     setItemName("");
     setItemQuantity("");
   };
@@ -46,12 +48,14 @@ export default function AddItem({ setFooddata }: SetFooddata) {
   return (
     <View style={styles.container}>
       <TextInput
+        value={item}
         onChangeText={setItemName}
         keyboardType="default"
         style={styles.inputOne}
         placeholder="Enter Item name"
       />
       <TextInput
+        value={itemQuantity}
         keyboardType="numeric"
         onChangeText={setItemQuantity}
         style={styles.inputTwo}

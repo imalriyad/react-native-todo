@@ -8,6 +8,8 @@ type AllItemProps = {
 };
 
 export default function AllItem({ foodData }: AllItemProps) {
+ 
+  
   return (
     <View>
       <ListTemplate itemData={foodData} />

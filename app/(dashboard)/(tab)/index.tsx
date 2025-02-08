@@ -19,12 +19,13 @@ const index = () => {
   ]);
 
   const renderComponent = () => {
+    
     switch (selectedTab) {
       case 1:
         return <AllItem foodData={foodData} />;
       case 2:
         return (
-          <LessStock lessStock={foodData.filter((item) => item.quantity < 5)} />
+          <LessStock lessStock={foodData.filter((item) => item.quantity <= 4)} />
         );
       case 3:
         return (
@@ -33,7 +34,7 @@ const index = () => {
           />
         );
       case 4:
-        return <AddItem setFooddata={setFooddata} />;
+        return <AddItem setFooddata={setFooddata} foodData={foodData} />;
       default:
         return <AllItem foodData={foodData} />;
     }
