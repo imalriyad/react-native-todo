@@ -33,7 +33,7 @@ const index = () => {
           />
         );
       case 4:
-        return <AddItem />;
+        return <AddItem setFooddata={setFooddata} />;
       default:
         return <AllItem foodData={foodData} />;
     }
@@ -69,6 +69,7 @@ const style = StyleSheet.create({
   },
   lableContainer: {
     display: "flex",
+    flexWrap:"wrap",
     flexDirection: "row",
     justifyContent: "center",
     gap: 10,
