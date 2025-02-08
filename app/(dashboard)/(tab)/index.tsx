@@ -13,11 +13,8 @@ const index = () => {
   const renderComponent = () => {
     switch (selectedTab) {
       case 1:
-        console.log("All Item");
-
         return <AllItem />;
       case 2:
-        console.log("LessStock");
         return <LessStock />;
       case 3:
         return <EnoguhStock />;
@@ -27,6 +24,7 @@ const index = () => {
         return <AllItem />;
     }
   };
+
   return (
     <SafeAreaView style={style.mainContainer}>
       <View style={style.lableContainer}>
@@ -68,8 +66,12 @@ const style = StyleSheet.create({
     color: "white",
     fontWeight: "500",
   },
+
   contentContainer: {
-    flex: 1,
-    padding: 20,
+    width: "100%",
+    height: "100%",
+    paddingTop: 18,
+    paddingBottom: 10,
+    backgroundColor: "white",
   },
 });
